@@ -18,13 +18,16 @@ def get_random_metrics(data_size=10, filesize=1000000, file="/data/yellow_tripda
 
     f.close()
     return data
+service_to_network = {
+'mec-svc-1': 'edge-net-1', 'mec-svc-2': 'edge-net-2'
+}
 
 def propagate_to_edge(data):
     sent = False
-    for region in ['bronx', 'brooklyn', 'manhattan', 'queens', 'satenisland']:
+    for fog_node in ['mec-svc-1', 'mec-svc-2']:
         try:
-            requests.post("http://fogify_edge-node-%s.region_%s:8000/"%(region, region), data=str(data), timeout=10)
-            sent=True
+            requests.post("http://fogify_%s.%s:8000/"%(fog_node, service_to_network[fog_node]), data=str(data), timeout=10)
+            sent = True
             break
         except:
             continue
