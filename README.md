@@ -58,4 +58,4 @@ can be easily build by running the following command:
 ```bash
 ./application/build-image.sh
 ```
-When the containers are built, the user can utilize the `application/docker-compose.yaml` file as input of the Fogify.
+When the containers are built, the user can utilize the `demo_files/docker-compose.yaml` file as input of the Fogify.
