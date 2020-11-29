@@ -58,4 +58,5 @@ can be easily build by running the following command:
 ```bash
 ./application/build-image.sh
 ```
-When the containers are built, the user can utilize the `demo_files/docker-compose.yaml` file as input of the Fogify.
+When the containers are built,  user has to create a folder named `/home/ubuntu/data` and should place the `yellow_tripdata_2018-01.csv` of New York taxi trip [dataset](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page).
+Finally, the user can utilize the `demo_files/docker-compose.yaml` file as input of the Fogify.
