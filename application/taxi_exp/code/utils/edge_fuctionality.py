@@ -26,14 +26,14 @@ def propagate_to_edge(data):
     sent = False
     for fog_node in ['mec-svc-1', 'mec-svc-2']:
         try:
-            requests.post("http://fogify_%s.%s:8000/"%(fog_node, service_to_network[fog_node]), data=str(data), timeout=10)
+            requests.post("http://tasks.%s.%s:8000/"%(fog_node, service_to_network[fog_node]), data=str(data), timeout=10)
             sent = True
             break
         except:
             continue
     if not sent:
         try:
-            requests.post("http://fogify_cloud-server.internet:8000/", data=str(data))
+            requests.post("http://tasks.cloud-server.internet:8000/", data=str(data))
         except Exception as e:
             print(e)
             print("data is lost")
@@ -43,7 +43,7 @@ def propagate_to_edge(data):
 
 def propagate(data):
     try:
-        requests.post("http://fogify_cloud-server.internet:8000/", data=str(data))
+        requests.post("http://tasks.cloud-server.internet:8000/", data=str(data))
     except Exception as e:
         print(e)
         print("data is lost")
